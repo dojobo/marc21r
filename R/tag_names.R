@@ -15,7 +15,7 @@ tag_names <- function(df, style="short") {
   extant_tags <- stringr::str_remove_all(extant_tags, "^t")
   extant_tags <- dplyr::tibble(tag = extant_tags)
 
-  marc_fields <- readRDS("marc_fields.rds")
+  load("R/sysdata.rda")  # instantiate marc_fields
   extant_tags <- extant_tags %>%
     dplyr::left_join(y=marc_fields)
 
