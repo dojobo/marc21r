@@ -1,3 +1,12 @@
+#' Apply readable names to a MARC dataframe.
+#'
+#' @param df A dataframe or dataframe extension (e.g., tibble)
+#' @param style Whether names should be `short` (default), i.e., abbreviated, or `long`, using the official Library of Congress designations.
+#'
+#' @return A tibble.
+#' @export
+#'
+#' @examples # TODO
 tag_names <- function(df, style="short") {
   extant_tags <- names(df)
   extant_tags <- str_remove_all(extant_tags, "^t")

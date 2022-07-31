@@ -1,3 +1,13 @@
+#' Read MARCXML into a tidy dataframe
+#'
+#' @param x A file path string or a string of XML.
+#' @param subfield_style Whether subfields are `hidden` (default), displayed `inline` (e.g., `$a The Myth of Sysiphus`), or `unnested` into distinct columns. Only `hidden` is implemented.
+#' @param repeating Whether repeating fields (e.g., subjects) are structured as `flat` strings (default), `list` objects, or `unnested` into multiple columns. Only `flat` is implemented.
+#'
+#' @return A tibble.
+#' @export
+#'
+#' @examples # TODO
 read_marcxml <- function(x,
                          subfield_style="hidden",
                          repeating="flat"
