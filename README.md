@@ -63,3 +63,11 @@ collection %>%
 #> 2 The White House [computer file].         Washington, D.C. : White Hou… Title …
 #> # … with abbreviated variable name ¹​t500_general_note
 ```
+
+## Current status
+
+This project is alpha/experimental. It “works” as a proof of concept
+with one or two example files, but I expect there are gaps. Post
+problems you encounter or feature requests on the
+[Issues](https://github.com/dojobo/marc21r/issues) page. I am also happy
+to accept pull requests!
