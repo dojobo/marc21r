@@ -52,7 +52,7 @@ read_marcxml <- function(x,
   }
 
   # flatten atomic fields:
-  atomic_fields <- c("leader", unique(substr(str_subset(names(coll), "(^t0[0-3]|^t05|^t1)"), 1, 4)))
+  atomic_fields <- c("leader", unique(substr(str_subset(names(df), "(^t00|^t0[1-3]|^t05|^t1)"), 1, 4)))
   for (field in atomic_fields) {
     df <- df %>%
       mutate({{field}} := unlist(.data[[field]]))
@@ -79,7 +79,7 @@ read_marcxml <- function(x,
   }
 
   if (repeating == "flat") {  # subject1; subject2
-    repeating_fields <- unique(substr(str_subset(names(coll), "^t[456789]"), 1, 4))
+    repeating_fields <- unique(substr(str_subset(names(df), "^t[456789]"), 1, 4))
     for (field in repeating_fields) {
       field_new <- paste0(field, "_new")
       # combine all iterations of the field into one column,
