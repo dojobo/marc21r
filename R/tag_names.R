@@ -15,9 +15,9 @@ tag_names <- function(df, style="short") {
   extant_tags <- stringr::str_remove_all(extant_tags, "^t")
   extant_tags <- dplyr::tibble(tag = extant_tags)
 
-  load("R/sysdata.rda")  # instantiate marc_fields
+  marc_fields <- marc21r:::marc_fields
   extant_tags <- extant_tags %>%
-    dplyr::left_join(y=marc_fields)
+    dplyr::left_join(y=marc_fields, by="tag")
 
   if (style == "short") {
     new_names <- extant_tags %>%
