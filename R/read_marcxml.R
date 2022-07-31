@@ -4,6 +4,12 @@
 #' @param subfield_style Whether subfields are `hidden` (default), displayed `inline` (e.g., `$a The Myth of Sysiphus`), or `unnested` into distinct columns. Only `hidden` is implemented.
 #' @param repeating Whether repeating fields (e.g., subjects) are structured as `flat` strings (default), `list` objects, or `unnested` into multiple columns. Only `flat` is implemented.
 #'
+#' @import dplyr
+#' @import purrr
+#' @import stringr
+#' @import tidyr
+#' @import xml2
+#'
 #' @return A tibble.
 #' @export
 #'
@@ -37,7 +43,7 @@ read_marcxml <- function(x,
   # fun to return a list-column entry list() as a flat string
   # note that we don't care about punctuation between subfields here
   clean_entry <- function(entry) {
-    if (is_null(entry)) {
+    if (is.null(entry)) {
       return(NA)
     }
     # TODO: if subfield style is inline...
